@@ -5,18 +5,25 @@ import T1_50.ListNode;
 import java.util.*;
 
 public class Test {
-    public static void main(String[] args) {
-        double xnext,x=0.5,r=2.5;
-        int count=300;
-        double[] nums=new double[count];
-        for (int i=0;i<count;i++){
-            xnext=x*(1-x)*r;
-            x=xnext;
-            nums[i]=xnext;
+    private static void test(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            try {
+                if (arr[i] % 2 == 0) {
+                    throw new NullPointerException();
+                } else {
+                    System.out.print(i);
+                }
+            } finally {
+                System.out.print("e");
+            }
         }
-        Arrays.sort(nums);
-        for (int i = 0; i < count; i++) {
-            System.out.println(String.format("%.3f",nums[i]));
+    }
+
+    public static void main(String[]args) {
+        try {
+            test(new int[] {0, 1, 2, 3, 4, 5});
+        } catch (Exception e) {
+            System.out.print("E");
         }
     }
 }
