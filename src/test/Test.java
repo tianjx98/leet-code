@@ -1,9 +1,5 @@
 package test;
 
-import T1_50.ListNode;
-
-import java.util.*;
-
 public class Test {
     private static void test(int[] arr) {
         for (int i = 0; i < arr.length; i++) {

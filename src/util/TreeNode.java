@@ -1,15 +1,19 @@
-package test;
+package util;
 
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
     TreeNode(Integer x) {
         val = x;
     }
 
-    TreeNode(Integer[] tree) {
+    /**
+     * 根据数组生成二叉树
+     * @param tree
+     */
+    public TreeNode(Integer[] tree) {
         if (tree == null || tree.length == 0) {
             val = 0;
             return;

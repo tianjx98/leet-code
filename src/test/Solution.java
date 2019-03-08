@@ -1,5 +1,7 @@
 package test;
 
+import util.TreeNode;
+
 class Solution {
     public boolean isValidBST(TreeNode root) {
         if (root == null) return true;

@@ -1,4 +1,4 @@
-package T1_50;
+package util;
 
 /**
  * Definition for singly-linked list.

@@ -1,5 +1,7 @@
 package T1_50;
 
+import util.ListNode;
+
 public class _2_addTwoNumbers {
     /**
      * https://leetcode-cn.com/problems/add-two-numbers/

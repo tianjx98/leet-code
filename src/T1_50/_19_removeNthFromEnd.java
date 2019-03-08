@@ -1,5 +1,7 @@
 package T1_50;
 
+import util.ListNode;
+
 class _19_removeNthFromEnd {
     /**
      *
