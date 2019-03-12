@@ -5,7 +5,11 @@ public class TreeNode {
     public TreeNode left;
     public TreeNode right;
 
-    TreeNode(Integer x) {
+    /**
+     * 生成一个树节点
+     * @param x
+     */
+    public TreeNode(Integer x) {
         val = x;
     }
 
@@ -35,4 +39,7 @@ public class TreeNode {
         }
     }
 
+    public void print(){
+
+    }
 }

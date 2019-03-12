@@ -17,7 +17,7 @@ public class 跳台阶 {
      */
     private static long combination(int m, int n) {
         if (m==n) return 1;
-        int c = 1;
+        long c = 1;
         for (int i = 0; i < m; i++) {
             c = c * (n - i) / (i + 1);
         }
@@ -25,7 +25,7 @@ public class 跳台阶 {
     }
 
     public static void main(String[] args) {
-        int n = 31;
+        int n = 44;
         int i = new 跳台阶().JumpFloor(n);
         System.out.println(i);
     }

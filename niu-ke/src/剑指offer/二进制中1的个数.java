@@ -14,7 +14,8 @@ public class 二进制中1的个数 {
     }
 
     public static void main(String[] args) {
-        int n=-1;
+        int n=-2147483648;
         int i = new 二进制中1的个数().NumberOf1(n);
+        System.out.println(i);
     }
 }
