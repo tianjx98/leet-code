@@ -1,48 +1,91 @@
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Scanner;
 
-/**
- * 带权树最长路径
- */
 public class 大臣的旅费 {
-    private static int maxLen = -1;
+    static class Node {
+        int val;
+        int len;
+
+        public Node(int val, int len) {
+            this.val = val;
+            this.len = len;
+        }
+
+        @Override
+        public String toString() {
+            return "(" + val + "," + len + ")";
+        }
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        int[][] len = new int[n + 1][n + 1];
-        ArrayList<ArrayList<Integer>> road = new ArrayList<ArrayList<Integer>>(n + 1);
-        road.add(null);
-        for (int i = 0; i < n; i++) {
-            road.add(new ArrayList<Integer>());
-        }
-        for (int i = 0; i < n - 1; i++) {
+        ArrayList<LinkedList<Node>> graph = new ArrayList<LinkedList<Node>>(n + 1);
+        graph.add(null);
+        for (int i = 0; i < n; i++)
+            graph.add(new LinkedList<Node>());
+        for (int i = 1; i < n; i++) {
             int a = scanner.nextInt();
             int b = scanner.nextInt();
             int c = scanner.nextInt();
-            len[a][b] = c;
-            len[b][a] = c;
-            road.get(a).add(b);
-            road.get(b).add(a);
+            graph.get(a).add(new Node(b, c));
+            graph.get(b).add(new Node(a, c));
         }
-        boolean[] flag = new boolean[n + 1];
-        for (int i = 1; i < n + 1; i++) {
-            dfs(len, road, flag, i, 0);
-        }
-        System.out.println(maxLen*10+maxLen*(1+maxLen)/2);
+        //int maxIndex = bfs(graph, 1)[0];
+        //int result = bfs(graph, maxIndex)[1];
+
+        boolean[] flag = new boolean[graph.size()];
+        dfs(graph, flag, 1, 0);
+        dfs(graph, flag, maxIndex, 0);
+        System.out.println(max * (21 + max) / 2);
     }
 
-    private static void dfs(int[][] len, ArrayList<ArrayList<Integer>> road, boolean[] flag, int city, int distance) {
-        ArrayList<Integer> to = road.get(city);
-        for (int i = 0; i < to.size(); i++) {
-            int toCity = to.get(i);
-            if (flag[toCity]) continue;
-            flag[city] = true;
-            distance += len[city][toCity];
-            if (distance > maxLen) maxLen = distance;
-            dfs(len, road, flag, toCity, distance);
-            distance -= len[city][toCity];
-            flag[city] = false;
+    private static int maxIndex = 0;
+    private static int max = 0;
+
+    private static void dfs(ArrayList<LinkedList<Node>> graph, boolean[] flag, int index, int len) {
+        LinkedList<Node> nodes = graph.get(index);
+        for (Node n : nodes) {
+            flag[index] = true;
+            if (flag[n.val]) continue;
+            len += n.len;
+            if (len > max) {
+                max = len;
+                maxIndex = n.val;
+            }
+            dfs(graph, flag, n.val, len);
+            len -= n.len;
+            flag[n.val] = false;
         }
     }
+
+    private static int[] bfs(ArrayList<LinkedList<Node>> graph, int start) {
+        boolean[] flag = new boolean[graph.size()];
+        int[] lens = new int[graph.size()];
+        flag[start] = true;
+        LinkedList<Node> queue = new LinkedList<Node>();
+        queue.add(new Node(start, 0));
+        while (!queue.isEmpty()) {
+            Node node = queue.poll();
+            LinkedList<Node> list = graph.get(node.val);
+            for (Node n : list) {
+                if (!flag[n.val]) {
+                    flag[n.val] = true;
+                    lens[n.val] += n.len + lens[node.val];
+                    queue.add(n);
+                }
+            }
+        }
+        int maxIndex = 1;
+        for (int i = 2; i < lens.length; i++) {
+            if (lens[i] > lens[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+        return new int[]{maxIndex, lens[maxIndex]};
+    }
+
 }

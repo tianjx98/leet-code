@@ -1,3 +1,5 @@
+package 第4届;
+
 import java.util.Scanner;
 
 public class 带分数 {

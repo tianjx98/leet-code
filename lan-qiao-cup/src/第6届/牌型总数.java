@@ -1,11 +1,7 @@
-package util;
+package 第6届;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
 
-public class Test {
+public class 牌型总数 {
     public static void main(String[] args) {
         dfs(0, 0);
         System.out.println(total);

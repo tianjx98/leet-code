@@ -3,7 +3,6 @@ package T101_150;
 import util.ArrayUtil;
 
 import java.util.List;
-// TODO 未完成
 class _120_minimumTotal {
     private int minTotal = Integer.MAX_VALUE;
 

@@ -1,4 +1,4 @@
-package 第三届;
+package 第3届;
 
 import java.util.Random;
 
