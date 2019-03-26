@@ -24,22 +24,6 @@ public class Template {
             }
         }
     }
-    /**
-     * 生成排列,可重复使用元素
-     * @param arr
-     * @param index
-     */
-    private static void dfs(ArrayList<Integer> arr, int index) {
-        if (arr.size() == 4) {
-            //check(arr);
-            return;
-        }
-        for (int i = 1; i < 10; i++) {
-            arr.add(i);
-            dfs(arr, index + 1);
-            arr.remove(arr.size() - 1);
-        }
-    }
 
     /**
      * 生成全排列, 排列元素中可包含重复元素,但结果不会重复
