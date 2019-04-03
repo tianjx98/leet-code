@@ -14,14 +14,15 @@ public class Timer {
 //    }
 
     public static void start() {
-        time=System.nanoTime();
-    }
-    public static void end() {
-        time=System.nanoTime()-time;
-        System.out.println("执行用时: "+time+" ns, "+time/1000+" μs, "+time/1000000+" ms");
+        time = System.nanoTime();
     }
 
-    public static void test(TestBlock block){
+    public static void end() {
+        time = System.nanoTime() - time;
+        System.out.println("执行用时: " + time / 1000 + " μs, " + time / 1000000 + " ms");
+    }
+
+    public static void test(TestBlock block) {
         start();
         block.run();
         end();
