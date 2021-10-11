@@ -27,6 +27,7 @@ class _726_CountOfAtoms {
         String atom = new String(chs, atomStart, start);
         final Integer atomCount = innerAtoms.get(atom);
         innerAtoms.put(atom, atomCount == null ? 1 : atomCount + 1);
+        return null;
     }
 
 }
